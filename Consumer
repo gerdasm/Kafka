@@ -1,0 +1,23 @@
+from kafka import KafkaConsumer
+
+bootstrap_servers = 'pkc-l7q2j.europe-north1.gcp.confluent.cloud:9092'
+security_protocol = 'SASL_SSL'
+sasl_mechanisms = 'PLAIN'
+sasl_username = 'CTSUYJA55NHIAPN4'
+sasl_password = 'FTeoKsSflc67+YfeFMvFi9KoAPBYOYsezZUue8BEU1xRqXGl/DAanGuiP/oP18Kc'
+
+consumer = KafkaConsumer ('sample_data', 
+                          enable_auto_commit = True,
+                          auto_offset_reset = 'earliest',
+                          bootstrap_servers = bootstrap_servers,
+                          security_protocol = security_protocol,
+                          sasl_mechanism  = sasl_mechanisms,
+                          sasl_plain_username = sasl_username,
+                          sasl_plain_password = sasl_password)
+
+total_count = 0
+
+for i in consumer:
+        total_count += 1
+
+total_count
